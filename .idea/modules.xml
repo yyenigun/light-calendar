@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/light-calendar.iml" filepath="$PROJECT_DIR$/light-calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/light-calendar-api/light-calendar-api.iml" filepath="$PROJECT_DIR$/light-calendar-api/light-calendar-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/light-calendar-mobile/light-calendar-mobile.iml" filepath="$PROJECT_DIR$/light-calendar-mobile/light-calendar-mobile.iml" />
+    </modules>
+  </component>
+</project>

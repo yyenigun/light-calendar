@@ -1,0 +1,35 @@
+spring:
+  application.name: light-calendar-api
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lightcalendar?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+logging:
+  file: ${java.io.tmpdir}/light-calendar-api.log
+server:
+  port: 8080
+  error:
+    path: /systemerror
+    whitelabel:
+      enabled: false
+---
+spring:
+  profiles: local
+  jpa:
+    show-sql: true
+---
+spring:
+  profiles: sandbox
+---
+spring:
+  profiles: stg
+---
+spring:
+  profiles: prod
