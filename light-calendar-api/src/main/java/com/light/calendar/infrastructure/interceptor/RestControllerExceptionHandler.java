@@ -29,17 +29,15 @@ public class RestControllerExceptionHandler {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<?> resourceNotFoundExceptionHandler(Locale locale, ResourceNotFoundException ex, WebRequest request) {
-        logger.warn("An error occurred. Correlation id: {}, Message : {}, Context Path: {}",
-                ex.getCorrelationId(), ex.getMessage(), request.getContextPath(), ex);
-        return createResponseEntity(locale, ex, HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> resourceNotFoundExceptionHandler(Locale locale, ResourceNotFoundException e, WebRequest request) {
+        logger.warn("An error occurred. Message : {}, Context Path: {}", e.getMessage(), request.getContextPath(), e);
+        return createResponseEntity(locale, e, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(RequestNotValidException.class)
-    public ResponseEntity<?> requestNotValidExceptionHandler(Locale locale, BusinessException ex, WebRequest request) {
-        logger.warn("An error occurred. Correlation id: {}, Message : {}, Context Path: {}",
-                ex.getCorrelationId(), ex.getMessage(), request.getContextPath(), ex);
-        return createResponseEntity(locale, ex, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> requestNotValidExceptionHandler(Locale locale, BusinessException e, WebRequest request) {
+        logger.warn("An error occurred. Message : {}, Context Path: {}", e.getMessage(), request.getContextPath(), e);
+        return createResponseEntity(locale, e, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)

@@ -16,12 +16,14 @@ public class RestCalendarEventController implements CalendarEventController {
     @ResponseStatus(HttpStatus.OK)
     @Override
     public void createEvent(Long calendarId, CalendarEventResource request) {
+        //TODO implement create event
     }
 
     @GetMapping("/calendars/{calendarId}/events")
     @ResponseStatus(HttpStatus.OK)
     @Override
     public List<CalendarEventResource> listEvents(Long calendarId, Date startDate, Date endDate) {
+        //TODO implement list events
         return null;
     }
 }
