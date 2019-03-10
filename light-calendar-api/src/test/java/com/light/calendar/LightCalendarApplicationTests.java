@@ -1,6 +1,6 @@
-package com.light.calendar.lightcalendar;
+package com.light.calendar;
 
-import com.light.calendar.lightcalendar.application.LightCalendarApplication;
+import com.light.calendar.application.LightCalendarApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

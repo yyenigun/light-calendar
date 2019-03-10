@@ -1,4 +1,4 @@
-package com.light.calendar.lightcalendar.domain.entity;
+package com.light.calendar.domain.entity;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -17,7 +17,7 @@ public class Calendar extends BaseEntity {
     private String displayName;
 
     @OneToMany(mappedBy = "calendar", fetch = FetchType.EAGER)
-    private Set<Event> events = new LinkedHashSet<>();
+    private Set<CalendarEvent> calendarEvents = new LinkedHashSet<>();
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class Calendar extends BaseEntity {
         this.displayName = displayName;
     }
 
-    public Set<Event> getEvents() {
-        return events;
+    public Set<CalendarEvent> getCalendarEvents() {
+        return calendarEvents;
     }
 
-    public void setEvents(Set<Event> events) {
-        this.events = events;
+    public void setCalendarEvents(Set<CalendarEvent> calendarEvents) {
+        this.calendarEvents = calendarEvents;
     }
 }

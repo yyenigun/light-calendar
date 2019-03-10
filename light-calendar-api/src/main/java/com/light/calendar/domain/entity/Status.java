@@ -1,4 +1,4 @@
-package com.light.calendar.lightcalendar.domain.entity;
+package com.light.calendar.domain.entity;
 
 public enum Status {
     PASSIVE(0),

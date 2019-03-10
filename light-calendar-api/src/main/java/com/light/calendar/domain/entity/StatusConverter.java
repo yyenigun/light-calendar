@@ -1,4 +1,4 @@
-package com.light.calendar.lightcalendar.domain.entity;
+package com.light.calendar.domain.entity;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

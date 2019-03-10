@@ -1,11 +1,11 @@
-package com.light.calendar.lightcalendar.domain.entity;
+package com.light.calendar.domain.entity;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "event")
-public class Event extends BaseEntity {
+@Table(name = "calendar_event")
+public class CalendarEvent extends BaseEntity {
 
     @Id
     @Column(name = "id")

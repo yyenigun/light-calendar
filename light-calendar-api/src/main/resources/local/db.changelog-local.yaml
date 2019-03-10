@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - preConditions:
+    dbms: mysql
+
+  - changeSet:
+      id: CAL-1.0.0
+      author: yalcin.yenigun
+      changes:
+        - sqlFile:
+            path: classpath:db/changelog/local/sql/light-calendar-1.0.0.sql
