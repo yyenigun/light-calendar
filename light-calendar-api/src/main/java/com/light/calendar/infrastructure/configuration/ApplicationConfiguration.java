@@ -2,6 +2,7 @@ package com.light.calendar.infrastructure.configuration;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.light.calendar.infrastructure.interceptor.CorrelationIdInterceptor;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -36,5 +37,10 @@ public class ApplicationConfiguration {
                 registry.addInterceptor(new CorrelationIdInterceptor());
             }
         };
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 }
