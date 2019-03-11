@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableJpaRepositories("com.light.calendar.domain.repository")
-@EntityScan(basePackages = {"com.frauctive.merchant.api.domain.entity"})
+@EntityScan(basePackages = {"com.light.calendar.domain.entity"})
 @EnableCaching
 @EnableAsync
 public class ApplicationConfiguration {

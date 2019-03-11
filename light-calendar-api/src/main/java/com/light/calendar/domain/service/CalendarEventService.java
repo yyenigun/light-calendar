@@ -4,6 +4,7 @@ import com.light.calendar.application.model.CalendarEventResource;
 import com.light.calendar.domain.entity.Calendar;
 import com.light.calendar.domain.entity.CalendarEvent;
 import com.light.calendar.domain.entity.Status;
+import com.light.calendar.domain.exception.RequestNotValidException;
 import com.light.calendar.domain.repository.CalendarEventRepository;
 import com.light.calendar.domain.repository.CalendarRepository;
 import com.light.calendar.domain.validator.CalendarEventValidator;
@@ -32,10 +33,12 @@ public class CalendarEventService {
 
     public void createEvent(Long calendarId, CalendarEventResource calendarEventResource, String locale) {
         calendarEventValidator.validate(calendarEventResource, locale);
-        Calendar calendar = calendarRepository.findByIdAndStatus(calendarId, Status.ACTIVE);
+        Calendar calendar = calendarRepository.findByIdAndStatus(calendarId, Status.ACTIVE)
+                .orElseThrow(() -> new RequestNotValidException("validation.calendar.not.found", locale));
         CalendarEvent calendarEvent = modelMapper.map(calendarEventResource, CalendarEvent.class);
         calendarEvent.setCreatedDate(new Date());
         calendarEvent.setCalendar(calendar);
+        calendarEvent.setStatus(Status.ACTIVE);
         calendarEventRepository.save(calendarEvent);
     }
 }

@@ -5,8 +5,10 @@ import com.light.calendar.domain.entity.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
 
-    Calendar findByIdAndStatus(Long id, Status status);
+    Optional<Calendar> findByIdAndStatus(Long id, Status status);
 }
