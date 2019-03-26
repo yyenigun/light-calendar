@@ -26,10 +26,9 @@ public class CalendarEventValidatorTest {
     public void should_throw_event_resource_mandatory_exception_when_resource_is_null() {
         //given
         CalendarEventResource resource = null;
-        String locale = "en";
 
         //when event validator is called
-        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource, locale));
+        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource));
 
         //then
         assertThat(throwable).isNotNull();
@@ -43,10 +42,9 @@ public class CalendarEventValidatorTest {
         //given
         CalendarEventResource resource = CalendarEventResourceBuilder.create();
         resource.setEventName(null);
-        String locale = "en";
 
         //when event validator is called
-        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource, locale));
+        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource));
 
         //then
         assertThat(throwable).isNotNull();
@@ -60,10 +58,9 @@ public class CalendarEventValidatorTest {
         //given
         CalendarEventResource resource = CalendarEventResourceBuilder.create();
         resource.setStartDate(null);
-        String locale = "en";
 
         //when event validator is called
-        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource, locale));
+        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource));
 
         //then
         assertThat(throwable).isNotNull();
@@ -77,10 +74,9 @@ public class CalendarEventValidatorTest {
         //given
         CalendarEventResource resource = CalendarEventResourceBuilder.create();
         resource.setEndDate(null);
-        String locale = "en";
 
         //when event validator is called
-        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource, locale));
+        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource));
 
         //then
         assertThat(throwable).isNotNull();
@@ -95,10 +91,9 @@ public class CalendarEventValidatorTest {
         CalendarEventResource resource = CalendarEventResourceBuilder.create();
         resource.setStartDate(DateUtils.parseDate("2019-06-30", DATE_FORMAT));
         resource.setEndDate(DateUtils.parseDate("2019-05-30", DATE_FORMAT));
-        String locale = "en";
 
         //when event validator is called
-        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource, locale));
+        Throwable throwable = catchThrowable(() -> calendarEventValidator.validate(resource));
 
         //then
         assertThat(throwable).isNotNull();

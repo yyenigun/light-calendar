@@ -29,11 +29,10 @@ public class CalendarEventServiceIT extends IntegrationTest {
     public void should_create_event() {
         //given
         Long calendarId = 1L;
-        String locale = "en";
         CalendarEventResource calendarEventResource = CalendarEventResourceBuilder.create();
 
         //when
-        calendarEventService.createEvent(calendarId, calendarEventResource, locale);
+        calendarEventService.createEvent(calendarId, calendarEventResource);
 
         //then
         Optional<CalendarEvent> calendarEventOptional = calendarEventRepository.findById(1L);

@@ -9,6 +9,6 @@ public interface CalendarEventController {
 
     void createEvent(Long calendarId, CalendarEventResource resource);
 
-    List<CalendarEventResource> listEvents(Long calendarId, Date startDate, Date endDate);
+    List<CalendarEventResource> listEvents(Long calendarId, String locale, Date startDate, Date endDate);
 
 }

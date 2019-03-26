@@ -12,6 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CalendarEventService {
@@ -31,14 +33,28 @@ public class CalendarEventService {
         this.modelMapper = modelMapper;
     }
 
-    public void createEvent(Long calendarId, CalendarEventResource calendarEventResource, String locale) {
-        calendarEventValidator.validate(calendarEventResource, locale);
+    public void createEvent(Long calendarId, CalendarEventResource calendarEventResource) {
+        calendarEventValidator.validate(calendarEventResource);
         Calendar calendar = calendarRepository.findByIdAndStatus(calendarId, Status.ACTIVE)
-                .orElseThrow(() -> new RequestNotValidException("validation.calendar.not.found", locale));
+                .orElseThrow(() -> new RequestNotValidException("validation.calendar.not.found", calendarEventResource.getLocale()));
         CalendarEvent calendarEvent = modelMapper.map(calendarEventResource, CalendarEvent.class);
         calendarEvent.setCreatedDate(new Date());
         calendarEvent.setCalendar(calendar);
         calendarEvent.setStatus(Status.ACTIVE);
         calendarEventRepository.save(calendarEvent);
+    }
+
+    public List<CalendarEventResource> retrieveEvents(Long calendarId,
+                                                      String locale,
+                                                      Date startDate,
+                                                      Date endDate) {
+        calendarEventValidator.validateCalendarId(calendarId);
+        Calendar calendar = calendarRepository.findByIdAndStatus(calendarId, Status.ACTIVE)
+                .orElseThrow(() -> new RequestNotValidException("validation.calendar.not.found", locale));
+        List<CalendarEvent> calendarEvents = calendarEventRepository
+                .findByCalendarAndStatusBetweenStartDateAndEndDate(calendar, Status.ACTIVE, startDate, endDate);
+        return calendarEvents.stream()
+                .map(c -> modelMapper.map(c, CalendarEventResource.class))
+                .collect(Collectors.toList());
     }
 }

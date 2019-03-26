@@ -2,7 +2,7 @@ package com.light.calendar.application.model;
 
 import java.util.Date;
 
-public class CalendarEventResource {
+public class CalendarEventResource extends BaseResource {
 
     private String eventName;
     private String eventDescription;

@@ -12,6 +12,7 @@ public class CalendarEventResourceBuilder {
         resource.setEndDate(new Date());
         resource.setEventName("my name");
         resource.setEventDescription("my desc");
+        resource.setLocale("EN");
         return resource;
     }
 }

@@ -8,21 +8,27 @@ import org.springframework.util.StringUtils;
 @Component
 public class CalendarEventValidator {
 
-    public void validate(CalendarEventResource resource, String locale) {
+    public void validate(CalendarEventResource resource) {
         if (resource == null) {
-            throw new RequestNotValidException("validation.field.mandatory.event", locale);
+            throw new RequestNotValidException("validation.field.mandatory.event", CalendarEventResource.getDefaultLocale());
         }
         if (StringUtils.isEmpty(resource.getEventName())) {
-            throw new RequestNotValidException("validation.field.mandatory.event.name", locale);
+            throw new RequestNotValidException("validation.field.mandatory.event.name", resource.getLocale());
         }
         if (resource.getStartDate() == null) {
-            throw new RequestNotValidException("validation.field.mandatory.event.startDate", locale);
+            throw new RequestNotValidException("validation.field.mandatory.event.startDate", resource.getLocale());
         }
         if (resource.getEndDate() == null) {
-            throw new RequestNotValidException("validation.field.mandatory.event.endDate", locale);
+            throw new RequestNotValidException("validation.field.mandatory.event.endDate", resource.getLocale());
         }
         if (resource.getStartDate().after(resource.getEndDate())) {
-            throw new RequestNotValidException("validation.field.event.datesMismatch", locale);
+            throw new RequestNotValidException("validation.field.event.datesMismatch", resource.getLocale());
+        }
+    }
+
+    public void validateCalendarId(Long calendarId) {
+        if (calendarId == null) {
+            throw new RequestNotValidException("validation.field.mandatory.calendarId", CalendarEventResource.getDefaultLocale());
         }
     }
 }
